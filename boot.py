@@ -34,6 +34,30 @@ def do_connect():
 	while not sta_if.isconnected():
 		pass
 
+def start():
+	spi = machine.SPI(1, baudrate=4000000, polarity=0, phase=0)
+	ss = machine.Pin(5, machine.Pin.OUT)
+	ss.value(0)
+	read(spi)
+
+def read(spi):
+	databuff = bytearray(512)
+	a = databuff[0]
+	spiServ = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	spiServ.connect(('192.168.1.115', 6755))
+	while databuff[0] == a:
+		spi.readinto(databuff)
+	db = ''
+	for i in databuff:
+		# print(chr(i), end='')
+		db = chr(i) + db
+	print(db)
+	data = bytes(db, 'utf-8')
+	spiServ.send(data)
+
+
+
 do_connect()
 webrepl.start()
 sendInfo()
+start()
