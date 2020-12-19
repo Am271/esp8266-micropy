@@ -1,1 +1,2 @@
 log.txt
+debug.log $ git rm --cached log.txt rm log.txt $ git commit -m Start ignoring log.txt
