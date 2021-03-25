@@ -8,6 +8,7 @@ import webrepl
 gc.collect()
 #machine.freq(160000000)
 # test
+# test2
 def getCred():
 	f = open('credentials.txt')
 	x = f.read().split()
