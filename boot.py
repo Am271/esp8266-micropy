@@ -7,7 +7,7 @@ import gc, socket
 import webrepl
 gc.collect()
 #machine.freq(160000000)
-
+# test
 def getCred():
 	f = open('credentials.txt')
 	x = f.read().split()
